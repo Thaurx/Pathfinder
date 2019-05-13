@@ -5,543 +5,605 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- Title -->
     <title> Pathfinder - Page de Personnage </title>
-
-    <!-- BOOTSRAP -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="container-fluid">
 
-        <div class="row">
-            <div class="col-xs-8">
-                <div style="background-color:rgb(250, 249, 230);">
-                    <h3> # Actions: </h3>
-                    <ul>
-                        <li v-for="action in actions">
-                            <input type="text" v-model="action.total">
-                            <input type="text" v-model="action.jet" v-on:change="Update">
-                            <b>{{ action.name }}</b>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" v-on:click="myPage=0">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" v-on:click="myPage=1">Page 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" v-on:click="myPage=2">Page 2</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-                <div style="background-color:rgb(245, 225, 200);">
-                    <h3> # Armes: </h3>
-                    <center>
-                        <b> ... </b>
-                    </center>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div style="background-color:lavender;">
-                    <h3> # Compétences: </h3>
-                    <ul>
-                        <li v-for="cmpt in cmpts">
-                            <input type="text" v-model="cmpt.total">
-                            <b>{{ cmpt.name }}</b>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <!-- Home-->
+        <div class="container-fluide" v-if="myPage == 0">
+                <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div style="background-color:rgb(250, 249, 230);">
+                                <h3> # Actions: </h3>
+                                <ul>
+                                    <li v-for="action in actions">
+                                        <input type="text" v-model="action.total">
+                                        <input type="text" v-model="action.jet" v-on:change="Update">
+                                        <b>{{ action.name }}</b>
+                                    </li>
+                                </ul>
+                            </div>
+            
+                            <div style="background-color:rgb(245, 225, 200);">
+                                <h3> # Armes: </h3>
+                                <center>
+                                    <b> ... </b>
+                                </center>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div style="background-color:lavender;">
+                                <h3> # Compétences: </h3>
+                                <ul>
+                                    <li v-for="cmpt in cmpts">
+                                        <input type="text" v-model="cmpt.total">
+                                        <b>{{ cmpt.name }}</b>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
         </div>
+
+        <!-- Page 1 -->
+        <div class="container-fluide" v-if="myPage == 1">
+            <article>
+                <h1>PAGE 1</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ad rerum molestias molestiae
+                    voluptas
+                    earum, esse exercitationem sed fuga deleniti reiciendis ratione! Neque quasi deleniti enim,
+                    sunt
+                    dolores
+                    possimus officiis?
+                </p>
+            </article>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="container-fluide" v-if="myPage == 2">
+            <article>
+                <h1>PAGE 2</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ad rerum molestias molestiae
+                    voluptas
+                    earum, esse exercitationem sed fuga deleniti reiciendis ratione! Neque quasi deleniti enim,
+                    sunt
+                    dolores
+                    possimus officiis?
+                </p>
+            </article>
+        </div>
+
+
+        
+
     </div>
+
+
+    <!-- Body Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.min.js"></script>
+
+
+
+    <!-- Vue.js -->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+                // Page
+                myPage: 0,
+
+                // Personnage
+                perso: {
+                    Pseudo: "Thaurx",
+                    Classe: "Tueur",
+                    Race: "Homme-Félin",
+                    Niveau: 9
+                },
+
+                // Caractéristiques
+                carac: {
+                    For: 7,
+                    Dex: 25,
+                    Con: 12,
+                    Int: 14,
+                    Sag: 14,
+                    Cha: 10,
+                    Pdv: 31
+                },
+
+                // Modificateurs
+                mod: {
+
+                    // Caractères
+                    For: 00,
+                    Dex: 00,
+                    Con: 00,
+                    Int: 00,
+                    Sag: 00,
+                    Cha: 00,
+
+                    // Autres
+                    Taille: 00,
+
+                    // Initiative
+                    Init_divr: 00,
+
+                    // Armure (CA)
+                    Armure: 08,
+                    Bouclier: 00,
+                    Naturelle: 00,
+                    Parade: 00,
+                    Ca_divr: 00,
+
+                    // Réflexes
+                    Rflx_base: 06,
+                    Rflx_temp: 00,
+                    Rflx_mag: 00,
+                    Rflx_divr: 00,
+
+                    // Vigeur
+                    Vig_base: 06,
+                    Vig_temp: 00,
+                    Vig_mag: 00,
+                    Vig_divr: 00,
+
+                    // Volonté
+                    Vlnt_base: 02,
+                    Vlnt_temp: 00,
+                    Vlnt_mag: 00,
+                    Vlnt_divr: 00,
+
+                    // BBA
+                    Bba_1: 09,
+                    Bba_2: 04
+                },
+
+                // Actions
+                actions: [
+
+                    // Vitesse
+                    {
+                        name: "Vitesse",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // Initiative
+                    {
+                        name: "Initiative",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // CA
+                    {
+                        name: "CA",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // Contact
+                    {
+                        name: "Contact",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // Réflexes
+                    {
+                        name: "Réflexes",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // Vigeur
+                    {
+                        name: "Vigeur",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // Volonté
+                    {
+                        name: "Volonté",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // BMO
+                    {
+                        name: "BMO",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // DMD
+                    {
+                        name: "DMD",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    },
+
+                    // Résistance Magique
+                    {
+                        name: "Résistance Magique",
+                        calc: 00,
+                        jet: 00,
+                        total: 00
+                    }
+                ],
+
+                // Compétances
+                cmpts: [{
+                    name: "Acrobaties",
+                    type: "Dex",
+                    rang: 25,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Art de la magie",
+                    type: "Int",
+                    rang: 25,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Artisanat",
+                    type: "Int",
+                    rang: 25,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Buff",
+                    type: "Cha",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (exploration souterraine)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (folklore local)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (géographie)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (histoire)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (ingénierie)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (mystères)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (nature)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (noblesse)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (plans)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Connaissances (religion)",
+                    type: "Int",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Déguisement",
+                    type: "Cha",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Diplomatie",
+                    type: "Cha",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Discrétion",
+                    type: "Dex",
+                    rang: 20,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Dressage",
+                    type: "Cha",
+                    rang: 20,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Équitation",
+                    type: "Dex",
+                    rang: 19,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Escalade",
+                    type: "For",
+                    rang: 19,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Escamotage",
+                    type: "Dex",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Estimation",
+                    type: "Dex",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Évasion",
+                    type: "Dex",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Intimidation",
+                    type: "Cha",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Linguistique",
+                    type: "Int",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Natation",
+                    type: "For",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Perception",
+                    type: "Sag",
+                    rang: 20,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Premiers secours",
+                    type: "Sag",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Profession",
+                    type: "Sag",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Psychologie",
+                    type: "Sag",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Représentation",
+                    type: "Cha",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Sabotage",
+                    type: "Dex",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Survie",
+                    type: "Sag",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Utilisation d'objets magiques",
+                    type: "Cha",
+                    rang: 04,
+                    modt: 00,
+                    total: 00
+                },
+                {
+                    name: "Vol",
+                    type: "Dex",
+                    rang: 00,
+                    modt: 00,
+                    total: 00
+                }
+                ]
+            },
+            methods: {
+
+                // Searching
+                Search_mod: function (type) {
+                    switch (type) {
+                        case "For": return this.mod.For;
+                        case "Dex": return this.mod.Dex;
+                        case "Con": return this.mod.Con;
+                        case "Int": return this.mod.Int;
+                        case "Sag": return this.mod.Sag;
+                        case "Cha": return this.mod.Cha;
+                    }
+                },
+                Search_action: function (actions) {
+                    return this.actions.find(function (element) {
+                        return element.name == actions;
+                    });
+                },
+                Search_cmpts: function (actions) {
+                    return this.actions.find(function (element) {
+                        return element.name == actions;
+                    });
+                },
+
+                // Calculs
+                Calculs_mod: function () {
+
+                    // Caractères
+                    this.mod.For = parseInt((this.carac.For - 10) / 2);
+                    this.mod.Dex = parseInt((this.carac.Dex - 10) / 2);
+                    this.mod.Con = parseInt((this.carac.Con - 10) / 2);
+                    this.mod.Int = parseInt((this.carac.Int - 10) / 2);
+                    this.mod.Sag = parseInt((this.carac.Sag - 10) / 2);
+                    this.mod.Cha = parseInt((this.carac.Cha - 10) / 2);
+                },
+                Calcul_action: function () {
+                    this.Search_action("Vitesse").calc = 0;
+                    this.Search_action("Initiative").calc = this.mod.Dex;
+                    this.Search_action("CA").calc = 10 + this.mod.Armure + this.mod.Bouclier + this.mod.Dex +
+                        this.mod.Taille + this.mod.Parade + this.mod.Ca_divr;
+                    this.Search_action("Contact").calc = this.mod.Dex + this.mod.Taille + this.mod.Ca_divr;
+                    this.Search_action("Réflexes").calc = this.mod.Rflx_base + this.mod.Dex +
+                        this.mod.Rflx_mag + this.mod.Rflx_divr + this.mod.Rflx_temp;
+                    this.Search_action("Vigeur").calc = this.mod.Vig_base + this.mod.Con +
+                        this.mod.Vig_mag + this.mod.Vig_divr + this.mod.Vig_temp;
+                    this.Search_action("Volonté").calc = this.mod.Vlnt_base + this.mod.Int +
+                        this.mod.Vlnt_mag + this.mod.Vlnt_divr + this.mod.Vlnt_temp;
+                    this.Search_action("BMO").calc = this.mod.Bba_1 + this.mod.For + this.mod.Taille;
+                    this.Search_action("DMD").calc = this.mod.Bba_1 + this.mod.For + this.mod.Dex +
+                        this.mod.Taille + 10;
+                    this.Search_action("Résistance Magique").calc = 0;
+                },
+                Calcul_cmpts: function () {
+                    for (var i = 0, len = this.cmpts.length; i < len; i++) {
+                        this.cmpts[i].modt = this.Search_mod(this.cmpts[i].type);
+                    }
+                },
+
+                // Updates
+                Update_action: function () {
+                    for (var i = 0, len = this.actions.length; i < len; i++) {
+                        this.actions[i].total = this.actions[i].calc + parseInt(this.actions[i].jet);
+                    }
+                },
+                Update_cmpts: function () {
+                    for (var i = 0, len = this.cmpts.length; i < len; i++) {
+                        this.cmpts[i].total = this.cmpts[i].modt + this.cmpts[i].rang;
+                    }
+                },
+                Update: function () {
+                    this.Calculs_mod();
+                    this.Calcul_cmpts();
+                    this.Update_cmpts();
+
+                    this.Calcul_action();
+                    this.Update_action();
+                }
+            },
+
+            // Constructor
+            created: function () {
+                this.Update();
+            }
+        })
+    </script>
 </body>
-
-<!-- Vue.js -->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-
-            // Personnage
-            perso: {
-                Pseudo: "Thaurx",
-                Classe: "Tueur",
-                Race: "Homme-Félin",
-                Niveau: 9
-            },
-
-            // Caractéristiques
-            carac: {
-                For: 7,
-                Dex: 25,
-                Con: 12,
-                Int: 14,
-                Sag: 14,
-                Cha: 10,
-                Pdv: 31
-            },
-
-            // Modificateurs
-            mod: {
-
-                // Caractères
-                For: 00,
-                Dex: 00,
-                Con: 00,
-                Int: 00,
-                Sag: 00,
-                Cha: 00,
-
-                // Autres
-                Taille: 00,
-
-                // Initiative
-                Init_divr: 00,
-
-                // Armure (CA)
-                Armure: 08,
-                Bouclier: 00,
-                Naturelle: 00,
-                Parade: 00,
-                Ca_divr: 00,
-
-                // Réflexes
-                Rflx_base: 06,
-                Rflx_temp: 00,
-                Rflx_mag: 00,
-                Rflx_divr: 00,
-
-                // Vigeur
-                Vig_base: 06,
-                Vig_temp: 00,
-                Vig_mag: 00,
-                Vig_divr: 00,
-
-                // Volonté
-                Vlnt_base: 02,
-                Vlnt_temp: 00,
-                Vlnt_mag: 00,
-                Vlnt_divr: 00,
-
-                // BBA
-                Bba_1: 09,
-                Bba_2: 04
-            },
-
-            // Actions
-            actions: [
-
-                // Vitesse
-                {
-                    name: "Vitesse",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // Initiative
-                {
-                    name: "Initiative",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // CA
-                {
-                    name: "CA",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // Contact
-                {
-                    name: "Contact",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // Réflexes
-                {
-                    name: "Réflexes",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // Vigeur
-                {
-                    name: "Vigeur",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // Volonté
-                {
-                    name: "Volonté",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // BMO
-                {
-                    name: "BMO",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // DMD
-                {
-                    name: "DMD",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                },
-
-                // Résistance Magique
-                {
-                    name: "Résistance Magique",
-                    calc: 00,
-                    jet: 00,
-                    total: 00
-                }
-            ],
-
-            // Compétances
-            cmpts: [{
-                name: "Acrobaties",
-                type: "Dex",
-                rang: 25,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Art de la magie",
-                type: "Int",
-                rang: 25,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Artisanat",
-                type: "Int",
-                rang: 25,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Buff",
-                type: "Cha",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (exploration souterraine)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (folklore local)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (géographie)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (histoire)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (ingénierie)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (mystères)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (nature)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (noblesse)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (plans)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Connaissances (religion)",
-                type: "Int",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Déguisement",
-                type: "Cha",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Diplomatie",
-                type: "Cha",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Discrétion",
-                type: "Dex",
-                rang: 20,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Dressage",
-                type: "Cha",
-                rang: 20,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Équitation",
-                type: "Dex",
-                rang: 19,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Escalade",
-                type: "For",
-                rang: 19,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Escamotage",
-                type: "Dex",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Estimation",
-                type: "Dex",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Évasion",
-                type: "Dex",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Intimidation",
-                type: "Cha",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Linguistique",
-                type: "Int",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Natation",
-                type: "For",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Perception",
-                type: "Sag",
-                rang: 20,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Premiers secours",
-                type: "Sag",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Profession",
-                type: "Sag",
-                rang: 00,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Psychologie",
-                type: "Sag",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Représentation",
-                type: "Cha",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Sabotage",
-                type: "Dex",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Survie",
-                type: "Sag",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Utilisation d'objets magiques",
-                type: "Cha",
-                rang: 04,
-                modt: 00,
-                total: 00
-            },
-            {
-                name: "Vol",
-                type: "Dex",
-                rang: 00,
-                modt: 00,
-                total: 00
-            }
-            ]
-        },
-        methods: {
-
-            // Searching
-            Search_mod: function (type) {
-                switch (type) {
-                    case "For": return this.mod.For;
-                    case "Dex": return this.mod.Dex;
-                    case "Con": return this.mod.Con;
-                    case "Int": return this.mod.Int;
-                    case "Sag": return this.mod.Sag;
-                    case "Cha": return this.mod.Cha;
-                }
-            },
-            Search_action: function (actions) {
-                return this.actions.find(function (element) {
-                    return element.name == actions;
-                });
-            },
-            Search_cmpts: function (actions) {
-                return this.actions.find(function (element) {
-                    return element.name == actions;
-                });
-            },
-
-            // Calculs
-            Calculs_mod: function () {
-
-                // Caractères
-                this.mod.For = parseInt((this.carac.For - 10) / 2);
-                this.mod.Dex = parseInt((this.carac.Dex - 10) / 2);
-                this.mod.Con = parseInt((this.carac.Con - 10) / 2);
-                this.mod.Int = parseInt((this.carac.Int - 10) / 2);
-                this.mod.Sag = parseInt((this.carac.Sag - 10) / 2);
-                this.mod.Cha = parseInt((this.carac.Cha - 10) / 2);
-            },
-            Calcul_action: function () {
-                this.Search_action("Vitesse").calc = 0;
-                this.Search_action("Initiative").calc = this.mod.Dex;
-                this.Search_action("CA").calc = 10 + this.mod.Armure + this.mod.Bouclier + this.mod.Dex +
-                    this.mod.Taille + this.mod.Parade + this.mod.Ca_divr;
-                this.Search_action("Contact").calc = this.mod.Dex + this.mod.Taille + this.mod.Ca_divr;
-                this.Search_action("Réflexes").calc = this.mod.Rflx_base + this.mod.Dex +
-                    this.mod.Rflx_mag + this.mod.Rflx_divr + this.mod.Rflx_temp;
-                this.Search_action("Vigeur").calc = this.mod.Vig_base + this.mod.Con +
-                    this.mod.Vig_mag + this.mod.Vig_divr + this.mod.Vig_temp;
-                this.Search_action("Volonté").calc = this.mod.Vlnt_base + this.mod.Int +
-                    this.mod.Vlnt_mag + this.mod.Vlnt_divr + this.mod.Vlnt_temp;
-                this.Search_action("BMO").calc = this.mod.Bba_1 + this.mod.For + this.mod.Taille;
-                this.Search_action("DMD").calc = this.mod.Bba_1 + this.mod.For + this.mod.Dex +
-                    this.mod.Taille + 10;
-                this.Search_action("Résistance Magique").calc = 0;
-            },
-            Calcul_cmpts: function () {
-                for (var i = 0, len = this.cmpts.length; i < len; i++) {
-                    this.cmpts[i].modt = this.Search_mod(this.cmpts[i].type);
-                }
-            },
-
-            // Updates
-            Update_action: function () {
-                for (var i = 0, len = this.actions.length; i < len; i++) {
-                    this.actions[i].total = this.actions[i].calc + parseInt(this.actions[i].jet);
-                }
-            },
-            Update_cmpts: function () {
-                for (var i = 0, len = this.cmpts.length; i < len; i++) {
-                    this.cmpts[i].total = this.cmpts[i].modt + this.cmpts[i].rang;
-                }
-            },
-            Update: function () {
-                this.Calculs_mod();
-                this.Calcul_cmpts();
-                this.Update_cmpts();
-
-                this.Calcul_action();
-                this.Update_action();
-            }
-        },
-
-        // Constructor
-        created: function () {
-            this.Update();
-        }
-    })
-</script>
 
 </html>
